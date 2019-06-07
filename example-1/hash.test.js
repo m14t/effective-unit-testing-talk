@@ -1,16 +1,5 @@
 const hash = require('./hash');
 
-jest.mock('ebg13', () => {
-  let previous = 'encoded-string';
-
-  return (x) => {
-    const temp = previous;
-    previous = x;
-
-    return temp;
-  };
-});
-
 describe('example-1', () => {
   describe('hash', () => {
     it('is a function', () => {
@@ -22,7 +11,7 @@ describe('example-1', () => {
 
       const result = hash(input);
 
-      expect(result).toEqual('encoded-string');
+      expect(result).toEqual('nopqrs1234!@#$');
     });
 
     it('encoding a string twice returns initial value', () => {
