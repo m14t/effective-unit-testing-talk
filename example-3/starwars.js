@@ -1,11 +1,11 @@
-const R = require('ramda');
 const fetch = require('node-fetch');
+const parseCharaterResponse = require('./parse-character-response');
 
 async function getStarWarsCharacters() {
   const response = await fetch('https://swapi.co/api/people');
   const data = await response.json();
 
-  return R.pluck('name', data.results);
+  return parseCharaterResponse(data);
 }
 
 module.exports = getStarWarsCharacters;
